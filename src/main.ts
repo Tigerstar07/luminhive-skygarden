@@ -79,6 +79,7 @@ interface HudRefs {
   chainFill: HTMLElement;
   message: HTMLElement;
   weatherLabel: HTMLElement;
+  weatherToggle: HTMLButtonElement;
 }
 
 const FLOWER_PHASES: PhaseVisual[] = [
@@ -301,18 +302,18 @@ class LuminhiveGame {
       <div class="top-right">
         <div class="location">Glowpetal Fields</div>
         <div class="mini-map"></div>
-        <div class="weather"><span class="sun"></span><span data-weather>Day · Clear</span></div>
+        <button type="button" class="weather" data-weather-toggle aria-label="Toggle day and night"><span class="sun"></span><span data-weather>Day · Clear</span></button>
       </div>
       <div class="center-message" data-message></div>
       <div class="chain-status">
         <strong data-chain-text>Bloom Chain dormant</strong>
         <div class="chain-meter"><div class="chain-fill" data-chain-fill></div></div>
       </div>
-      <div class="bottom-nav">
-        <div class="nav-button">✦<span>Lumens</span></div>
-        <div class="nav-button">⬢<span>Hive</span></div>
-        <div class="nav-button">⌖<span>Map</span></div>
-        <div class="nav-button">⚒<span>Build</span></div>
+      <div class="bottom-nav" aria-label="Game controls">
+        <div class="nav-button"><kbd>WASD</kbd><span>Move</span></div>
+        <div class="nav-button"><kbd>Drag</kbd><span>Orbit</span></div>
+        <div class="nav-button"><kbd>N</kbd><span>Night</span></div>
+        <div class="nav-button"><kbd>Auto</kbd><span>Gather</span></div>
       </div>
     `;
     this.app.appendChild(hud);
@@ -326,7 +327,8 @@ class LuminhiveGame {
       chainText: hud.querySelector("[data-chain-text]"),
       chainFill: hud.querySelector("[data-chain-fill]"),
       message: hud.querySelector("[data-message]"),
-      weatherLabel: hud.querySelector("[data-weather]")
+      weatherLabel: hud.querySelector("[data-weather]"),
+      weatherToggle: hud.querySelector("[data-weather-toggle]")
     };
 
     for (const [key, value] of Object.entries(refs)) {
@@ -1247,6 +1249,8 @@ class LuminhiveGame {
   }
 
   private setupInput(): void {
+    this.hud.weatherToggle.addEventListener("click", () => this.toggleNight());
+
     window.addEventListener("keydown", (event: KeyboardEvent) => {
       this.keys.add(event.code);
       if (event.code === "KeyN") {

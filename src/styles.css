@@ -178,7 +178,17 @@ canvas {
   border-radius: 999px;
   background: rgba(7, 28, 47, 0.38);
   backdrop-filter: blur(10px);
+  font: inherit;
   font-size: 13px;
+  color: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.weather:focus-visible {
+  outline: 2px solid #ffe16b;
+  outline-offset: 3px;
 }
 
 .sun {
@@ -263,6 +273,13 @@ canvas {
   font-size: 25px;
 }
 
+.nav-button kbd {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff2bd;
+}
+
 .nav-button span {
   display: block;
   margin-top: 2px;
@@ -290,6 +307,10 @@ canvas {
   .top-right {
     top: 12px;
     right: 12px;
+  }
+
+  .location {
+    display: none;
   }
 
   .mini-map {
