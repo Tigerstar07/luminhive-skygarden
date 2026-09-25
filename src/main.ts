@@ -286,8 +286,8 @@ class LuminhiveGame {
         <div class="brand">
           <div class="crest">⬢</div>
           <div>
-            <div class="title">LUMINHIVE 2</div>
-            <div class="subtitle">Glowpetal Fields</div>
+            <div class="title">Luminhive</div>
+            <div class="subtitle">Skygarden</div>
           </div>
         </div>
         <div class="resource-panel">

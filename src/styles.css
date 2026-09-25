@@ -46,6 +46,10 @@ canvas {
   display: flex;
   align-items: center;
   gap: 12px;
+  width: fit-content;
+  padding: 8px 16px 8px 8px;
+  border-radius: 10px;
+  background: rgba(10, 24, 34, 0.72);
 }
 
 .crest {
@@ -70,10 +74,9 @@ canvas {
 
 .subtitle {
   margin-top: 4px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #9ee9ff;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  color: #bfeeff;
 }
 
 .resource-panel {

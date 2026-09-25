@@ -1,4 +1,4 @@
-# Luminhive 2 Gameplay Spec Notes
+# Luminhive Skygarden gameplay notes
 
 ## Flowers
 

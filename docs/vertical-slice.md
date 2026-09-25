@@ -1,6 +1,6 @@
-# Luminhive 2 Vertical Slice
+# Luminhive Skygarden vertical slice
 
-This folder starts the playable visual prototype for Luminhive 2.
+This folder starts the playable visual prototype for Luminhive Skygarden.
 
 ## First playable scope
 

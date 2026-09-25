@@ -1,47 +1,34 @@
 # Luminhive Skygarden
 
-A playable Three.js prototype for a floating Skygarden simulator. The project explores procedural world building, autonomous creature behaviour, resource loops and a compact game HUD in the browser.
+A small browser game in Three.js. You walk around a floating island with a giant hive tree while little glowing creatures called Lumens fly between flowers, collect pollen and bring it home. Pollen and nectar turn into honey and wax over time.
 
-![Luminhive playtest](docs/playtest-screenshot.png)
+![Playtest screenshot](docs/playtest-screenshot.png)
 
-## Implemented
+Everything on screen is built in code: the island, the tree and its platforms, waterfalls, flowers, huts, clouds and the Lumens themselves. There are no model files yet, which kept it quick to iterate on and means it loads instantly.
 
-- Third-person movement and a rotatable camera.
-- A procedural floating island with a glowing hive tree, platforms, waterfalls, flowers and clouds.
-- Autonomous Lumens that route to flowers and collect pollen.
-- Nectar, honey and wax production loops.
-- Four flower-efficiency states from Full Bloom to Exhausted.
-- A timed Bloom Chain ability with partial and perfect multipliers.
-- Atmosphere controls, particles, bloom lighting and a responsive HUD.
+## Playing
 
-## Controls
+| Key | Action |
+| --- | --- |
+| `W` `A` `S` `D` or arrows | move |
+| drag | orbit the camera |
+| `N` | switch between day and night |
 
-- Move with `WASD` or the arrow keys.
-- Drag to rotate the camera.
-- Press `N` to change the atmosphere.
-- Move close to the pulsing Lumen to start Bloom Chain, then reach additional Lumens before the timer expires.
+Every so often one Lumen starts pulsing. Walk into it to start a **Bloom Chain**: each extra Lumen you reach within five seconds resets the timer and raises the pollen multiplier. Catch all of them for a 20 second boost, or let the timer run out for a shorter one.
 
-## Run locally
+Flowers never die. Each harvest drains them one step (full bloom, fading, drained, exhausted) and they recover a step every 2.5 seconds, so Lumens spread out across the island instead of stripping one patch. The numbers are in [docs/gameplay-spec.md](docs/gameplay-spec.md).
+
+## Running it
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Open `http://127.0.0.1:5173`.
+Open http://127.0.0.1:5173. `npm run build` type-checks and produces a static build in `dist/`.
 
-## Build
+## What's next
 
-```bash
-npm run build
-```
+The procedural tree, player, huts and Lumens are placeholders for proper GLB models. The game logic and island layout are kept separate from the meshes so they can be swapped without touching the simulation. See [docs/engine-path.md](docs/engine-path.md) and [docs/vertical-slice.md](docs/vertical-slice.md) for where it's heading.
 
-## Technology
-
-- TypeScript
-- Three.js
-- Vite
-- Procedural geometry and WebGL effects
-
-The current prototype deliberately uses procedural assets so the simulation is immediately playable. A future art pass can replace the tree, player, huts and Lumens with authored GLB assets while keeping the game logic and scene layout.
-
+Built with TypeScript, Three.js and Vite.
